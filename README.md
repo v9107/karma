@@ -4,4 +4,5 @@
 
 
 ### 🔔 Note 
-Currently working for the database I'm using a Simple `Vec<T>` will move to proper database
+Currently for the database I'm using a simple `Vec<T>` which works as in-memory db for now,
+will move to proper database
