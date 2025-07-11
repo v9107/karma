@@ -641,15 +641,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 
 [[package]]
-name = "hello-actix"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "clap",
- "serde",
-]
-
-[[package]]
 name = "http"
 version = "0.2.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -826,6 +817,15 @@ checksum = "38f262f097c174adebe41eb73d66ae9c06b2844fb0da69969647bbddd9b0538a"
 dependencies = [
  "getrandom",
  "libc",
+]
+
+[[package]]
+name = "karma"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "clap",
+ "serde",
 ]
 
 [[package]]
