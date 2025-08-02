@@ -29,7 +29,10 @@ where
     T: Clone,
 {
     type Item = T;
-    type Iter<'a> = std::slice::Iter<'a, Self::Item> where Self::Item: 'a;
+    type Iter<'a>
+        = std::slice::Iter<'a, Self::Item>
+    where
+        Self::Item: 'a;
     type Output = Result<(), Box<dyn std::error::Error>>;
 
     fn save(&mut self, data: Self::Item) -> Self::Output {
@@ -39,5 +42,23 @@ where
 
     fn list<'a>(&'a self) -> Self::Iter<'a> {
         self.store.iter()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::domain::tasks::Task;
+
+    use super::*;
+
+    #[test]
+    fn test_task_list_is_appropriate() {
+        let name = "todo".to_string();
+        let description = Some("this is task description".to_string());
+        let task = Task::new(name.clone(), description.clone());
+        let dup_stask: Task = Task::new(name, description);
+        let conn = VecDB::new(Some(vec![task, dup_stask]));
+
+        assert_eq!(conn.list().len(), 2);
     }
 }

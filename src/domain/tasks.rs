@@ -22,7 +22,7 @@ impl Task {
     pub fn title(&self) -> String {
         self.title.clone()
     }
-    
+
     /// Getter method for `description`
     pub fn description(&self) -> Option<String> {
         self.description.to_owned()
