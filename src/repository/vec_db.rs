@@ -29,6 +29,7 @@ where
     T: Clone,
 {
     type Item = T;
+    type Iter<'a> = std::slice::Iter<'a, Self::Item> where Self::Item: 'a;
     type Output = Result<(), Box<dyn std::error::Error>>;
 
     fn save(&mut self, data: Self::Item) -> Self::Output {
@@ -36,7 +37,7 @@ where
         Ok(())
     }
 
-    fn list(&self) -> impl Iterator<Item = Self::Item> {
-        self.store.iter().cloned()
+    fn list<'a>(&'a self) -> Self::Iter<'a> {
+        self.store.iter()
     }
 }
